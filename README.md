@@ -5,6 +5,7 @@
 
 > **Read a xml file respecting its encoding information**
 
+..Working on docs..
 
 ## License
 See [license](https://github.com/bjrmatos/read-xml/blob/master/LICENSE)
