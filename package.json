@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
-    "build": "babel src --out-dir lib",
+    "build": "babel src --out-dir lib --ignore node_modules",
     "lint": "eslint src test",
     "test": "mocha",
     "prepublish": "npm-run-all lint clean build"
