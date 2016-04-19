@@ -59,12 +59,16 @@ function decodeXML(content, encoding, cb) {
     }
 
     debugMe(`decoding xml content (${encoding})..`);
-    cb(null, iconv.decode(buf, encoding));
+
+    cb(null, {
+      encoding,
+      content: iconv.decode(buf, encoding)
+    });
   });
 }
 
 export function readXML(content, cb) {
-  const done = once((err, xml) => cb(err, xml));
+  const done = once((err, data) => cb(err, data));
   let readCount = 1,
       bufLength;
 

@@ -69,6 +69,8 @@ DecoderXMLStream.prototype._transform = function(chunk, encoding, done) {
 
       debugMe(`encoding detected, decoding chunk to ${detectedEncoding}..`);
 
+      this.emit('encodingDetected', detectedEncoding);
+
       this.encodingDetected = detectedEncoding;
       this.push(iconv.decode(chunk, detectedEncoding), this.encoding);
       done();

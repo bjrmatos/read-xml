@@ -37,12 +37,13 @@ var fs = require('fs'),
 var FILE = path.join(__dirname, 'test/xml/simple-iso-8859-1.xml');
 
 // pass a buffer or a path to a xml file
-xmlReader.readXML(fs.readFileSync(FILE), function(err, xml) {
+xmlReader.readXML(fs.readFileSync(FILE), function(err, data) {
   if (err) {
     console.error(err);
   }
 
-  console.log('Decoded xml:', xml);
+  console.log('xml encoding:', data.encoding);
+  console.log('Decoded xml:', data.content);
 });
 ```
 
@@ -58,6 +59,10 @@ var fs = require('fs'),
 var FILE = path.join(__dirname, 'test/xml/simple-iso-8859-1.xml');
 
 var decodedXMLStream = fs.createReadStream(FILE).pipe(xmlReader.createStream());
+
+decodedXMLStream.on('encodingDetected', function(encoding) {
+  console.log('Encoding:', encoding);
+});
 
 decodedXMLStream.on('data', function(xmlStr) {
   console.log(xmlStr);
