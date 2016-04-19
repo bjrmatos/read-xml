@@ -1,6 +1,6 @@
 {
   "name": "read-xml",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Read a xml file respecting its encoding information",
   "main": "lib/index.js",
   "scripts": {
