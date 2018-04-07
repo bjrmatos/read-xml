@@ -1,4 +1,3 @@
-'use strict';
 
 import fs from 'fs';
 import debug from 'debug';
@@ -89,6 +88,7 @@ export function readXML(content, cb) {
         return decodeXML(content, DEFAULT_ENCODING, done);
       }
 
+      // eslint-disable-next-line no-plusplus
       readCount++;
 
       readOrCopyBytes(content, MAX_BYTES_TO_READ * readCount, (readNextErr, nextContent) => {

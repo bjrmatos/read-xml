@@ -1,4 +1,3 @@
-'use strict';
 
 import debug from 'debug';
 import once from 'once';

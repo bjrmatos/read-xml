@@ -1,4 +1,3 @@
-'use strict';
 
 const DEFAULT_ENCODING = 'utf8';
 

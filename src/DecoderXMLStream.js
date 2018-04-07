@@ -1,4 +1,3 @@
-'use strict';
 
 import debug from 'debug';
 import stream from 'stream';
@@ -7,7 +6,7 @@ import findEncodingInXMLBuffer from './findEncoding';
 import DEFAULT_ENCODING from './defaultEncoding';
 import pkg from '../package.json';
 
-const Transform = stream.Transform;
+const { Transform } = stream;
 const debugMe = debug(`${pkg.name}:stream`);
 
 function concatBuffers(chunks) {
@@ -19,6 +18,7 @@ function concatBuffers(chunks) {
 function DecoderXMLStream(streamOpts) {
   let options = streamOpts || {};
 
+  // eslint-disable-next-line no-multi-assign
   options.encoding = this.encoding = DEFAULT_ENCODING; // we output strings
 
   this.chunks = [];
@@ -33,6 +33,7 @@ DecoderXMLStream.prototype = Object.create(Transform.prototype, {
   }
 });
 
+// eslint-disable-next-line no-underscore-dangle
 DecoderXMLStream.prototype._transform = function(chunk, encoding, done) {
   if (!Buffer.isBuffer(chunk)) {
     return done(new Error('read-xml#createStream needs buffers as its input'));
